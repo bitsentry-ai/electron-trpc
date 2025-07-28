@@ -6,17 +6,24 @@ import { router } from './api';
 process.env.DIST = path.join(__dirname, '../dist');
 process.env.PUBLIC = app.isPackaged ? process.env.DIST : path.join(process.env.DIST, '../public');
 
+const preload = path.join(__dirname, './preload.js');
 const url = process.env['VITE_DEV_SERVER_URL'];
 
 app.on('ready', () => {
   const win = new BrowserWindow({
     webPreferences: {
+      preload,
       // Context isolation is required for electron-trpc
       contextIsolation: true,
     },
   });
 
-  createIPCHandler({ router, windows: [win] });
+  // Explicitly disable automatic preload registration
+  createIPCHandler({
+    router,
+    windows: [win],
+    autoRegisterPreload: false,
+  });
 
   if (url) {
     win.loadURL(url);

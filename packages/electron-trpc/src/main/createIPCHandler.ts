@@ -1,5 +1,5 @@
 import type { AnyRouter, inferRouterContext } from '@trpc/server';
-import { ipcMain } from 'electron';
+import { ipcMain, session } from 'electron';
 import type { BrowserWindow, IpcMainEvent } from 'electron';
 import { handleIPCMessage } from './handleIPCMessage';
 import { CreateContextOptions } from './types';
@@ -7,6 +7,8 @@ import { ELECTRON_TRPC_CHANNEL } from '../constants';
 import { ETRPCRequest } from '../types';
 import { Unsubscribable } from '@trpc/server/observable';
 import debugFactory from 'debug';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const debug = debugFactory('electron-trpc:main:IPCHandler');
 
@@ -109,10 +111,38 @@ export const createIPCHandler = <TRouter extends AnyRouter>({
   createContext,
   router,
   windows = [],
+  autoRegisterPreload = true,
 }: {
   createContext?: (opts: CreateContextOptions) => Promise<inferRouterContext<TRouter>>;
   router: TRouter;
   windows?: Electron.BrowserWindow[];
+  autoRegisterPreload?: boolean;
 }) => {
+  if (autoRegisterPreload) {
+    // Register the preload script automatically
+    let preloadPath: string;
+
+    // Determine the preload script path
+    if (typeof require !== 'undefined' && typeof require.resolve === 'function') {
+      // CommonJS - use require.resolve for better compatibility with bundlers
+      preloadPath = require.resolve('electron-trpc/preload-auto');
+    } else if (typeof import.meta.url !== 'undefined') {
+      // ESM - import.meta.url will be in the dist directory
+      const __filename = fileURLToPath(import.meta.url);
+      const __dirname = path.dirname(__filename);
+      preloadPath = path.join(__dirname, 'preload-auto.cjs');
+    } else {
+      throw new Error(
+        'Failed to resolve electron-trpc preload script path. ' +
+        'Unable to determine current module directory.'
+      );
+    }
+
+    debug('Auto-registering preload script at:', preloadPath);
+
+    // Use setPreloads to automatically inject the preload script
+    session.defaultSession.setPreloads([...session.defaultSession.getPreloads(), preloadPath]);
+  }
+
   return new IPCHandler({ createContext, router, windows });
 };

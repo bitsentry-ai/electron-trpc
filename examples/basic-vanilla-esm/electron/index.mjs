@@ -7,24 +7,17 @@ import { router } from './api.mjs';
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const html = path.join(dirname, '../dist/index.html');
-const preload = path.join(dirname, '../preload/preload.mjs');
 
 app.on('ready', () => {
   const win = new BrowserWindow({
     webPreferences: {
-      /*
-       * Disabling sandbox allows preload script to use ESM imports.
-       *
-       * It is recommended to instead use a bundler to bundle the preload script with its dependencies and leave the
-       * sandbox enabled.
-       *
-       * See https://www.electronjs.org/docs/latest/tutorial/esm
-       */
-      sandbox: false,
-      preload,
+      // Context isolation is required for electron-trpc
+      contextIsolation: true,
+      // No preload script needed - it will be auto-registered!
     },
   });
 
+  // The autoRegisterPreload option defaults to true now
   createIPCHandler({ router, windows: [win] });
 
   win.loadFile(html);

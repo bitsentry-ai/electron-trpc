@@ -6,7 +6,8 @@
   "license": "MIT",
   "scripts": {
     "start": "vite",
-    "build": "vite build"
+    "build": "vite build",
+    "typecheck": "tsc"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.29.14",

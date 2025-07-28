@@ -150,6 +150,55 @@ importers:
         specifier: ^20.12.8
         version: 20.12.8
 
+  examples/manual-preload-react:
+    dependencies:
+      '@tanstack/react-query':
+        specifier: ^4.29.14
+        version: 4.29.14(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@trpc/client':
+        specifier: 10.33.1
+        version: 10.33.1(@trpc/server@10.33.1)
+      '@trpc/react-query':
+        specifier: 10.33.1
+        version: 10.33.1(@tanstack/react-query@4.29.14(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@trpc/client@10.33.1(@trpc/server@10.33.1))(@trpc/server@10.33.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@trpc/server':
+        specifier: 10.33.1
+        version: 10.33.1
+      electron:
+        specifier: 29.3.2
+        version: 29.3.2
+      electron-trpc:
+        specifier: workspace:*
+        version: link:../../packages/electron-trpc
+      react:
+        specifier: ^18.2.0
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.3.1(react@18.3.1)
+      zod:
+        specifier: ^3.21.4
+        version: 3.23.8
+    devDependencies:
+      '@types/node':
+        specifier: ^20.12.8
+        version: 20.12.8
+      '@types/react':
+        specifier: ^18.3.1
+        version: 18.3.1
+      '@types/react-dom':
+        specifier: ^18.3.0
+        version: 18.3.0
+      '@vitejs/plugin-react':
+        specifier: ^4.2.1
+        version: 4.2.1(vite@5.2.11(@types/node@20.12.8))
+      vite:
+        specifier: ^5.2.11
+        version: 5.2.11(@types/node@20.12.8)
+      vite-plugin-electron:
+        specifier: ^0.28.7
+        version: 0.28.7
+
   packages/electron-trpc:
     dependencies:
       debug:
@@ -5449,6 +5498,14 @@ snapshots:
     optionalDependencies:
       react-dom: 18.2.0(react@18.2.0)
 
+  '@tanstack/react-query@4.29.14(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@tanstack/query-core': 4.29.14
+      react: 18.3.1
+      use-sync-external-store: 1.2.0(react@18.3.1)
+    optionalDependencies:
+      react-dom: 18.3.1(react@18.3.1)
+
   '@tanstack/react-query@5.32.1(react@18.3.1)':
     dependencies:
       '@tanstack/query-core': 5.32.1
@@ -5469,6 +5526,14 @@ snapshots:
       '@trpc/server': 10.33.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
+
+  '@trpc/react-query@10.33.1(@tanstack/react-query@4.29.14(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@trpc/client@10.33.1(@trpc/server@10.33.1))(@trpc/server@10.33.1)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@tanstack/react-query': 4.29.14(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@trpc/client': 10.33.1(@trpc/server@10.33.1)
+      '@trpc/server': 10.33.1
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
 
   '@trpc/server@10.33.1': {}
 
@@ -9077,6 +9142,10 @@ snapshots:
   use-sync-external-store@1.2.0(react@18.2.0):
     dependencies:
       react: 18.2.0
+
+  use-sync-external-store@1.2.0(react@18.3.1):
+    dependencies:
+      react: 18.3.1
 
   util-deprecate@1.0.2: {}
 

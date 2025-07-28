@@ -46,8 +46,7 @@ npm install --save electron-trpc
    app.on('ready', () => {
      const win = new BrowserWindow({
        webPreferences: {
-         // Replace this path with the path to your preload file (see next step)
-         preload: 'path/to/preload.js',
+         contextIsolation: true, // Required for electron-trpc
        },
      });
 
@@ -55,13 +54,36 @@ npm install --save electron-trpc
    });
    ```
 
-2. Expose the IPC to the render process from the [preload file](https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts):
+   > Note: The preload script is now automatically registered by default. No manual preload configuration needed!
+
+2. If you need to use a custom preload script, you can disable automatic registration:
+
+   ```ts
+   createIPCHandler({ 
+     router, 
+     windows: [win],
+     autoRegisterPreload: false // Disable automatic preload registration
+   });
+   ```
+
+   Then manually create a preload file:
 
    ```ts
    import { exposeElectronTRPC } from 'electron-trpc/preload';
 
    process.once('loaded', async () => {
      exposeElectronTRPC();
+   });
+   ```
+
+   And specify it in your BrowserWindow:
+
+   ```ts
+   const win = new BrowserWindow({
+     webPreferences: {
+       preload: 'path/to/preload.js',
+       contextIsolation: true,
+     },
    });
    ```
 

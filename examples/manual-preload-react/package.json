@@ -1,5 +1,5 @@
 {
-  "name": "examples/basic-react",
+  "name": "examples/manual-preload-react",
   "version": "0.0.0",
   "private": true,
   "main": "dist-electron/index.js",
