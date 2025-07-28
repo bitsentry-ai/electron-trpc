@@ -11,6 +11,7 @@ test('Hello Electron', async () => {
   });
 
   const window = await electronApp.firstWindow();
+  await window.waitForLoadState('load');
   expect(await window.title()).toBe('Hello from Electron renderer!');
 
   const response = await window.textContent('[data-testid="greeting"]');
