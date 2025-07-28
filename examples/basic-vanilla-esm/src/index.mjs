@@ -18,7 +18,7 @@ async function writeGreeting() {
 }
 
 async function listenForSubscription() {
-  trpcReact.subscription.subscribe(undefined, {
+  trpc.subscription.subscribe(undefined, {
     onData: (data) => {
       console.log(data);
     },
