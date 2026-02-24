@@ -1,4 +1,5 @@
 import { Operation, TRPCClientError, TRPCLink } from '@trpc/client';
+import { getTransformer } from '@trpc/client/unstable-internals';
 import type { AnyRouter, inferRouterContext, ProcedureType } from '@trpc/server';
 import type { TRPCResponseMessage } from '@trpc/server/rpc';
 import type { RendererGlobalElectronTRPC } from '../types';
@@ -88,13 +89,15 @@ class IPCClient {
   }
 }
 
-export function ipcLink<TRouter extends AnyRouter>(): TRPCLink<TRouter> {
-  return (runtime) => {
+export function ipcLink<TRouter extends AnyRouter>(opts?: { transformer?: unknown }): TRPCLink<TRouter> {
+  const transformer = getTransformer(opts?.transformer as any);
+
+  return () => {
     const client = new IPCClient();
 
     return ({ op }) => {
       return observable((observer) => {
-        op.input = runtime.transformer.serialize(op.input);
+        op.input = transformer.input.serialize(op.input);
 
         const unsubscribe = client.request(op, {
           error(err) {
@@ -105,7 +108,7 @@ export function ipcLink<TRouter extends AnyRouter>(): TRPCLink<TRouter> {
             observer.complete();
           },
           next(response) {
-            const transformed = transformResult(response, runtime);
+            const transformed = transformResult(response, transformer);
 
             if (!transformed.ok) {
               observer.error(TRPCClientError.from(transformed.error));
