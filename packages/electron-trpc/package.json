@@ -63,7 +63,7 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "superjson": "^2.2.6",
-    "vite": "^7.3.1",
+    "vite": "^7.3.2",
     "vite-plugin-commonjs-externals": "^0.1.4",
     "vitest": "^4.1.0",
     "zod": "^4.3.6"
