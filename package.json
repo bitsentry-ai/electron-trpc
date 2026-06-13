@@ -29,8 +29,18 @@
     "pnpm": ">=9"
   },
   "pnpm": {
-    "requiredScripts": [
-      "build"
-    ]
+    "overrides": {
+      "devalue": "5.8.1",
+      "esbuild": "0.28.1",
+      "fast-uri": "3.1.2",
+      "lodash": "4.17.23",
+      "picomatch@2": "2.3.2",
+      "picomatch@4": "4.0.4",
+      "postcss": "8.5.10",
+      "smol-toml": "1.6.1",
+      "undici": "7.24.0",
+      "ws": "8.20.1",
+      "yaml": "2.8.3"
+    }
   }
 }

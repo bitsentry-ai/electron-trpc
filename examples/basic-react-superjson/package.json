@@ -13,7 +13,7 @@
     "@trpc/client": "11.10.0",
     "@trpc/react-query": "11.10.0",
     "@trpc/server": "11.10.0",
-    "electron": "40.6.0",
+    "electron": "40.8.5",
     "electron-trpc": "workspace:*",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
