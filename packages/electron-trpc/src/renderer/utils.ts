@@ -13,16 +13,15 @@ export function transformResult<TRouter extends AnyRouter, TOutput>(
     | TRPCResponse<TOutput, inferRouterError<TRouter>>,
   transformer: CombinedDataTransformer
 ) {
-  return transformTRPCResult(
-    response,
-    transformer.output
-  ) as {
-    ok: true;
-    result: TRPCResultMessage<TOutput>['result'];
-  } | {
-    ok: false;
-    error: {
-      error: inferRouterError<TRouter>;
-    };
-  };
+  return transformTRPCResult(response, transformer.output) as
+    | {
+        ok: true;
+        result: TRPCResultMessage<TOutput>['result'];
+      }
+    | {
+        ok: false;
+        error: {
+          error: inferRouterError<TRouter>;
+        };
+      };
 }

@@ -89,7 +89,9 @@ class IPCClient {
   }
 }
 
-export function ipcLink<TRouter extends AnyRouter>(opts?: { transformer?: unknown }): TRPCLink<TRouter> {
+export function ipcLink<TRouter extends AnyRouter>(opts?: {
+  transformer?: unknown;
+}): TRPCLink<TRouter> {
   const transformer = getTransformer(opts?.transformer as any);
 
   return () => {
