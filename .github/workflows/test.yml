@@ -48,3 +48,5 @@ jobs:
         run: pnpm exec playwright install-deps
       - run: pnpm build
       - run: xvfb-run --auto-servernum -- pnpm test:e2e
+        env:
+          ELECTRON_NO_SANDBOX: '1'
