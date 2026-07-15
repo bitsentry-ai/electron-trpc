@@ -40,6 +40,10 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: 'pnpm'
       - run: pnpm install --frozen-lockfile
+      - name: Resolve Electron binary
+        run: |
+          electron_path="$(pnpm --filter electron-trpc exec node -e 'console.log(require("electron"))')"
+          echo "PLAYWRIGHT_ELECTRON_PATH=$electron_path" >> "$GITHUB_ENV"
       - name: Install Playwright runtime dependencies
         run: pnpm exec playwright install-deps
       - run: pnpm build
