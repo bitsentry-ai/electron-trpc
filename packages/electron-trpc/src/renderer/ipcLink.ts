@@ -99,9 +99,13 @@ export function ipcLink<TRouter extends AnyRouter>(opts?: {
 
     return ({ op }) => {
       return observable((observer) => {
-        op.input = transformer.input.serialize(op.input);
+        const { signal: _signal, ...ipcOperation } = op;
+        const requestOperation = {
+          ...ipcOperation,
+          input: transformer.input.serialize(op.input),
+        } as Operation;
 
-        const unsubscribe = client.request(op, {
+        const unsubscribe = client.request(requestOperation, {
           error(err) {
             observer.error(err as TRPCClientError<any>);
             unsubscribe();
