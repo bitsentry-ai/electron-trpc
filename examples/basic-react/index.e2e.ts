@@ -2,7 +2,7 @@ import { _electron as electron, test, expect } from '@playwright/test';
 
 test('Hello Electron', async () => {
   const electronApp = await electron.launch({
-    args: [`${__dirname}`],
+    args: [...(process.env.ELECTRON_NO_SANDBOX === '1' ? ['--no-sandbox'] : []), `${__dirname}`],
     executablePath: process.env.PLAYWRIGHT_ELECTRON_PATH ?? undefined,
   });
 

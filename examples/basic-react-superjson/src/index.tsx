@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import ReactDom from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { ipcLink } from 'electron-trpc/renderer';
 import superjson from 'superjson';
 import { createTRPCReact } from '@trpc/react-query';
@@ -41,4 +41,10 @@ function HelloElectron() {
   return <div>{data.text}</div>;
 }
 
-ReactDom.render(<App />, document.getElementById('react-root'));
+const root = document.getElementById('react-root');
+
+if (!root) {
+  throw new Error('React root element is missing.');
+}
+
+createRoot(root).render(<App />);
