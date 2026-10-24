@@ -131,9 +131,6 @@ importers:
         specifier: ^4.4.3
         version: 4.4.3
     devDependencies:
-      '@tanstack/react-query':
-        specifier: ^5.90.21
-        version: 5.90.21(react@19.2.4)
       '@trpc/client':
         specifier: 11.10.0
         version: 11.10.0(@trpc/server@11.10.0(typescript@7.0.2))(typescript@7.0.2)
@@ -146,24 +143,15 @@ importers:
       '@types/node':
         specifier: ^25.3.0
         version: 25.3.0
-      '@types/ws':
-        specifier: ^8.5.14
-        version: 8.18.1
       '@vitest/coverage-v8':
         specifier: ^4.0.18
         version: 4.0.18(vitest@4.0.18(@types/node@25.3.0)(lightningcss@1.32.0)(yaml@2.9.0))
-      builtin-modules:
-        specifier: ^5.0.0
-        version: 5.0.0
       electron:
         specifier: 40.6.0
         version: 40.6.0
       react:
         specifier: ^19.2.4
         version: 19.2.4
-      react-dom:
-        specifier: ^19.2.4
-        version: 19.2.4(react@19.2.4)
       superjson:
         specifier: ^2.2.6
         version: 2.2.6
@@ -173,9 +161,6 @@ importers:
       vite:
         specifier: ^7.3.1
         version: 7.3.1(@types/node@25.3.0)(lightningcss@1.32.0)(yaml@2.9.0)
-      vite-plugin-commonjs-externals:
-        specifier: ^0.1.4
-        version: 0.1.4(vite@7.3.1(@types/node@25.3.0)(lightningcss@1.32.0)(yaml@2.9.0))
       vitest:
         specifier: ^4.0.18
         version: 4.0.18(@types/node@25.3.0)(lightningcss@1.32.0)(yaml@2.9.0)
@@ -1572,9 +1557,6 @@ packages:
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
 
-  '@types/ws@8.18.1':
-    resolution: {integrity: sha512-ThVF6DCVhA8kUGy+aazFQ4kXQ7E1Ty7A3ypFOe0IcJV8O/M511G99AW24irKrW56Wt44yG9+ij8FaqoBGkuBXg==}
-
   '@types/yauzl@2.10.3':
     resolution: {integrity: sha512-oJoftv0LSuaDZE3Le4DbKX+KS9G36NzOeSap90UIK0yMA/NhKJhqlSGtNDORNRaIbQfzjXDrQa0ytJ6mNRGz/Q==}
 
@@ -1750,11 +1732,6 @@ packages:
     peerDependencies:
       acorn: ^6.0.0 || ^7.0.0 || ^8.0.0
 
-  acorn@8.16.0:
-    resolution: {integrity: sha512-UVJyE9MttOsBQIDKw1skb9nAwQuR5wuGD3+82K6JgJlm/Y+KI92oNsMNGZCYdDsVtRHSak0pcV5Dno5+4jh9sw==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
-
   acorn@8.17.0:
     resolution: {integrity: sha512-xRQbDb9BnwDafYNn6Vwl839DYVjqXYb1XVGtWAZ1kcDc6iwAL4hg3B1dZlRiuENFeO2H53gFG3in621AdERVAg==}
     engines: {node: '>=0.4.0'}
@@ -1865,10 +1842,6 @@ packages:
 
   buffer-crc32@0.2.13:
     resolution: {integrity: sha512-VO9Ht/+p3SN7SKWqcrgEzjGbRSJYTx+Q1pTQC0wrWqHx0vpJraQ6GtHx8tvcg1rlK1byhU5gccxgOgj7B0TDkQ==}
-
-  builtin-modules@5.0.0:
-    resolution: {integrity: sha512-bkXY9WsVpY7CvMhKSR6pZilZu9Ln5WDrKVBUXf2S443etkmEO4V58heTecXcUIsNsi4Rx8JUO4NfX1IcQl4deg==}
-    engines: {node: '>=18.20'}
 
   cacheable-lookup@5.0.4:
     resolution: {integrity: sha512-2/kNscPhpcxrOigMZzbiWF7dz8ilhb/nIHU3EyZiXWXpeq/au8qJ8VhdftMkty3n7Gj6HIGalQG8oiBNB3AJgA==}
@@ -3571,11 +3544,6 @@ packages:
   vfile@6.0.3:
     resolution: {integrity: sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q==}
 
-  vite-plugin-commonjs-externals@0.1.4:
-    resolution: {integrity: sha512-mJ5KzL8F3RqyFh8IhEBfRK6cDY+HXz7HXIDht5c9W+DOKbLpk57CX1LOwnG/Lx3v++ywIcMt51yRuezATV8kaQ==}
-    peerDependencies:
-      vite: ^4.3.9 || ^5.0.0
-
   vite-plugin-electron@0.29.0:
     resolution: {integrity: sha512-HP0DI9Shg41hzt55IKYVnbrChWXHX95QtsEQfM+szQBpWjVhVGMlqRjVco6ebfQjWNr+Ga+PeoBjMIl8zMaufw==}
     peerDependencies:
@@ -5109,10 +5077,6 @@ snapshots:
 
   '@types/unist@3.0.3': {}
 
-  '@types/ws@8.18.1':
-    dependencies:
-      '@types/node': 25.3.0
-
   '@types/yauzl@2.10.3':
     dependencies:
       '@types/node': 25.3.0
@@ -5248,8 +5212,6 @@ snapshots:
   acorn-jsx@5.3.2(acorn@8.17.0):
     dependencies:
       acorn: 8.17.0
-
-  acorn@8.16.0: {}
 
   acorn@8.17.0: {}
 
@@ -5427,8 +5389,6 @@ snapshots:
       update-browserslist-db: 1.2.3(browserslist@4.28.1)
 
   buffer-crc32@0.2.13: {}
-
-  builtin-modules@5.0.0: {}
 
   cacheable-lookup@5.0.4: {}
 
@@ -7638,13 +7598,6 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
-
-  vite-plugin-commonjs-externals@0.1.4(vite@7.3.1(@types/node@25.3.0)(lightningcss@1.32.0)(yaml@2.9.0)):
-    dependencies:
-      acorn: 8.16.0
-      es-module-lexer: 1.7.0
-      magic-string: 0.30.21
-      vite: 7.3.1(@types/node@25.3.0)(lightningcss@1.32.0)(yaml@2.9.0)
 
   vite-plugin-electron@0.29.0: {}
 
