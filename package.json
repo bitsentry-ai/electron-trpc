@@ -14,7 +14,8 @@
     "docs:start": "pnpm --filter www dev",
     "docs:build": "pnpm --filter www build",
     "docs:preview": "pnpm --filter www preview",
-    "docs:publish": "pnpm --filter www publish-pages"
+    "docs:publish": "pnpm --filter www publish-pages",
+    "knip": "knip"
   },
   "packageManager": "pnpm@9.15.0",
   "devDependencies": {
@@ -22,7 +23,8 @@
     "@changesets/cli": "^2.29.8",
     "@playwright/test": "^1.58.2",
     "prettier": "^3.8.1",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "knip": "6.42.1"
   },
   "engines": {
     "node": ">=18",
