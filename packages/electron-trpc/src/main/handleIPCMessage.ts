@@ -74,13 +74,12 @@ export async function handleIPCMessage<TRouter extends AnyRouter>({
         },
       });
       return;
-    } else {
-      if (!isObservable(result)) {
-        throw new TRPCError({
-          message: `Subscription ${path} did not return an observable`,
-          code: 'INTERNAL_SERVER_ERROR',
-        });
-      }
+    }
+    if (!isObservable(result)) {
+      throw new TRPCError({
+        message: `Subscription ${path} did not return an observable`,
+        code: 'INTERNAL_SERVER_ERROR',
+      });
     }
 
     const subscription = result.subscribe({
