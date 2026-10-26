@@ -8,7 +8,7 @@ import { ipcLink } from '../ipcLink';
 import superjson from 'superjson';
 
 const t = initTRPC.create();
-const router = t.router({
+const _router = t.router({
   testQuery: t.procedure.query(() => 'query success'),
   testMutation: t.procedure.input(z.string()).mutation(() => 'mutation success'),
   testSubscription: t.procedure.subscription(() => {
@@ -24,9 +24,9 @@ const router = t.router({
     }),
 });
 
-type Router = typeof router;
+type Router = typeof _router;
 
-const electronTRPC: RendererGlobalElectronTRPC = {} as any;
+const electronTRPC = {} as RendererGlobalElectronTRPC;
 let handlers: ((message: TRPCResponseMessage) => void)[] = [];
 beforeEach(() => {
   handlers = [];

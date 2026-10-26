@@ -20,7 +20,7 @@ const getInternalId = (event: IpcMainEvent, request: ETRPCRequest) => {
 
 class IPCHandler<TRouter extends AnyRouter> {
   #windows: BrowserWindow[] = [];
-  #subscriptions: Map<string, Unsubscribable> = new Map();
+  #subscriptions = new Map<string, Unsubscribable>();
 
   constructor({
     createContext,
@@ -98,7 +98,7 @@ class IPCHandler<TRouter extends AnyRouter> {
           `frameRoutingId: ${frameRoutingId}`
         );
         this.#cleanUpSubscriptions({
-          webContentsId: webContentsId,
+          webContentsId,
           frameRoutingId,
         });
       }
