@@ -7,6 +7,7 @@
     "test:ci": "pnpm -r test:ci",
     "lint": "prettier --check .",
     "lint:fix": "prettier --write .",
+    "lint:ts6": "node scripts/eslint/verify-ts6-linter.mjs && eslint packages/electron-trpc/src",
     "prepublishOnly": "pnpm build",
     "changeset": "changeset",
     "changeset:version": "changeset version && pnpm install --no-frozen-lockfile",
@@ -21,10 +22,16 @@
   "devDependencies": {
     "@changesets/changelog-github": "^0.5.2",
     "@changesets/cli": "^2.29.8",
+    "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.58.2",
+    "eslint": "^10.5.0",
+    "eslint-plugin-sonarjs": "^4.2.2",
+    "eslint-plugin-unicorn": "^68.0.0",
+    "globals": "^17.6.0",
+    "knip": "6.42.1",
     "prettier": "^3.8.1",
-    "typescript": "^7.0.2",
-    "knip": "6.42.1"
+    "typescript": "npm:@typescript/typescript6@^6.0.2",
+    "typescript-eslint": "^8.63.0"
   },
   "engines": {
     "node": ">=18",

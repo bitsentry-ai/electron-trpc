@@ -7,7 +7,7 @@ import { handleIPCMessage } from '../handleIPCMessage';
 import { IpcMainEvent } from 'electron';
 
 interface MockEvent {
-  reply: MockedFunction<any>;
+  reply: MockedFunction<IpcMainEvent['reply']>;
   sender: {
     isDestroyed: () => boolean;
     on: (event: string, cb: () => void) => void;
